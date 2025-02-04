@@ -1,1 +1,2 @@
 # Web-Blitz
+this is my project of making a website of my own imagination for our college's curtural fest inacand. I have tried to make this web page responsive and interactive hovewer i have done the html and css part by my own but for the java part i took some help from chat gpt to get to know about java tools and implement that on my project. i have beenm doing frontend from past few months. Thank you.
