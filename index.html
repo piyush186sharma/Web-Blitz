@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incandescence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+    <style>
+        @keyframes glowing {
+            0% {
+                color: white;
+                text-shadow: 0px 0px 10px #0dff0d, 0px 0px 20px #0dff0d;
+                transform: scale3d(1, 1, 1);
+            }
+
+            50% {
+                color: #f9fd50;
+                text-shadow: 0px 0px 20px #0dff0d, 0px 0px 30px #0dff0d;
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+
+            100% {
+                color: white;
+                text-shadow: 0px 0px 10px #0dff0d, 0px 0px 20px #0dff0d;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        @keyframes glowings {
+            0% {
+                color: white;
+                text-shadow: 0px 0px 10px #3bc5f8, 0px 0px 20px #22ebeb;
+
+            }
+
+            50% {
+                color: #50dafd;
+                text-shadow: 0px 0px 20px #0ddfff, 0px 0px 30px #0de7ff;
+
+            }
+
+            100% {
+                color: white;
+                text-shadow: 0px 0px 10px #0dbaff, 0px 0px 20px #0ddbff;
+
+            }
+        }
+
+
+
+
+        @keyframes shineEffect {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(10px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+                text-shadow: 0px 0px 20px #0dff0d, 0px 0px 30px #0dff0d;
+            }
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(90deg, #0d0d0d, #490202);
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: top;
+            padding: 20px 50px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: top;
+            justify-content: center;
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 3.5em;
+            margin: 0;
+            font-family: "Rubik Wet Paint", serif;
+            font-weight: 400;
+            font-style: normal;
+            animation: glowing 3s infinite ease-in-out;
+        }
+
+        nav {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px;
+            width: 524px;
+            height: 50px;
+            background: #222;
+            overflow: hidden;
+        }
+
+        nav a {
+            position: relative;
+            display: inline-block;
+            font-size: 1em;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            padding: 0px 20px;
+            transition: 0.3s;
+            z-index: 2;
+        }
+
+        nav a:hover {
+            color: #f9fd50;
+            transform: scale3d(1.1, 1.1, 1.1);
+        }
+
+        nav span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 95px;
+            height: 100%;
+            background: linear-gradient(45deg, #00bd56, #f9fd50);
+            box-shadow: 0px 4px 25px rgba(202, 246, 8, 0.896);
+            border-radius: 8px;
+            transition: 0.5s;
+            z-index: 1;
+        }
+
+        nav a:nth-child(1):hover~span {
+            left: 0;
+            width: 95px;
+        }
+
+        nav a:nth-child(2):hover~span {
+            left: 110px;
+            width: 115px;
+        }
+
+        nav a:nth-child(3):hover~span {
+            left: 250px;
+            width: 120px;
+        }
+
+        nav a:nth-child(4):hover~span {
+            left: 380px;
+            width: 140px;
+        }
+
+        .content {
+            position: relative;
+            border-radius: 1.5rem;
+            border: 2px solid aqua;
+            box-shadow: 0px 4px 25px rgba(17, 174, 217, 0.896);
+            overflow: hidden;
+            margin-top: 100px;
+            margin-bottom: 50px;
+            width: fit-content;
+            transition: 0.3s ease-in-out;
+        }
+
+        .content:hover {
+            transform: scale3d(1.1, 1.1, 1.1);
+        }
+
+        .container-1 {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+
+        .content h1 {
+            color: #05c6ed;
+            font-size: 3.5em;
+            margin: 20px;
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            z-index: 1;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+            transform: translateX(100%);
+            animation: shineEffect 2s infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        h3 {
+            margin: 20px;
+            text-align: center;
+            transition: 0.3s ease-in-out;
+        }
+
+        .year h2 {
+            color: white;
+            font-size: 3.5em;
+            margin: 20px;
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            text-align: center;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        h3 {
+            color: white;
+            font-size: 1.2em;
+            line-height: 1.6em;
+            text-align: center;
+            word-spacing: 10px;
+            margin-top: 40px;
+            animation: glowings 3s infinite ease-in-out;
+        }
+
+        .dropdown {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            width: 300px;
+            height: fit-content;
+            background: #a023ff;
+            color: #aa44f9;
+            overflow: hidden;
+            margin-top: 50px;
+            transform: rotate(20deg);
+            transition: 0.3s ease-in;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .taskbar {
+            position: relative;
+            display: inline-block;
+            font-size: 1.2em;
+            font-weight: 600;
+            background: linear-gradient(45deg, #9b0fc9, #0733a0);
+            box-shadow: 0px 4px 35px rgba(18, 193, 233, 0.896);
+            text-decoration: none;
+            padding: 0px 20px;
+            transition: 0.3s;
+            z-index: 2;
+            width: 100%;
+            padding-left: 40px;
+        }
+
+        .dropdown::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+            transform: translateX(100%);
+            animation: shineEffect 2s infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .dropdown p {
+            font-family: cursive;
+            color: white;
+        }
+
+        .dropdown:hover {
+            transform: scale3d(1.1, 1.1, 1.1);
+            background-color: rgb(32, 3, 34);
+            box-shadow: 10px #22ebeb;
+            color: aliceblue;
+        }
+
+        .container-2 {
+            min-height: 100vh;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 20px;
+            font-family: 'Rubik Wet Paint', serif;
+        }
+
+        .left-text {
+            flex-basis: 30%;
+        }
+
+        .gallary {
+            flex-basis: 50%;
+            display: grid;
+            gap: 8px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 120px;
+        }
+
+        .heading {
+            font-size: 3rem;
+            color: white;
+            text-align: center;
+        }
+
+        .subheading {
+            color: #ddd;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .box {
+            background-size: cover;
+            background-position: top;
+            color: white;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            background-color: #222;
+            background-blend-mode: hard-light;
+            transition: all 1s ease-in-out;
+
+        }
+
+        .col-2 {
+            grid-column: span 2;
+        }
+
+        .row-2 {
+            grid-row: span 2;
+        }
+
+        .box:hover {
+            background-color: #999;
+            background-position: center;
+            box-shadow: 0 0 10px rgb(12, 184, 222);
+            cursor: pointer;
+        }
+
+        body.dark-mode {
+            background: black;
+            color: #ffffff;
+        }
+
+        body.dark-mode .container,
+        body.dark-mode .footer-content {
+            background-color: black;
+            color: #f1f1f1;
+        }
+
+        body.dark-mode nav {
+            background: #0a0000;
+        }
+
+        body.dark-mode nav a {
+            color: #ddd;
+        }
+
+        body.dark-mode nav span {
+            background: linear-gradient(45deg, #444, #666);
+        }
+
+        body.dark-mode .box {
+            background-blend-mode: lighten;
+        }
+
+        @media (max-width: 1000px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo h1 {
+                font-size: 2.5em;
+            }
+
+            nav {
+                width: 100%;
+                height: auto;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                padding: 10px;
+            }
+
+            .content h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container-1 {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .dropdown {
+                width: 90%;
+                transform: rotate(0deg);
+                margin-top: 20px;
+            }
+
+            .gallary {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 100px;
+            }
+
+            .box {
+                font-size: 0.8em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 2em;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+                height: auto;
+            }
+
+            nav a {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            .content {
+                width: 90%;
+                margin: 20px auto;
+            }
+
+            .year h2 {
+                font-size: 2em;
+            }
+
+            .dropdown {
+                width: 100%;
+            }
+
+            .container-2 {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .left-text {
+                text-align: center;
+                flex-basis: 100%;
+            }
+
+            .gallary {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .box {
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 10px;
+            }
+
+            .logo h1 {
+                font-size: 1.5em;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            .content h1 {
+                font-size: 1.5em;
+            }
+
+            .year h2 {
+                font-size: 1.8em;
+            }
+
+            h3 {
+                font-size: 1em;
+                margin: 20px 10px;
+            }
+
+            .left-text {
+                margin: 20px 0;
+            }
+
+            .gallary {
+                gap: 5px;
+            }
+
+            .box {
+                font-size: 0.7em;
+            }
+
+            .dropdown {
+                margin-top: 10px;
+            }
+        }
+
+        .event {
+            color: rgb(208, 251, 16);
+            font-size: 1.5em;
+            margin: 20px;
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            z-index: 1;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px 50px;
+        }
+
+        .sponsor{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 50px;
+        }
+
+        .sponsor h3{
+            font-size: 1.5rem;
+        }
+        .carousel {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            display: block;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .indicator.active {
+            background-color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Incandescence</h1>
+        </div>
+        <div>
+            <nav>
+                <a href="#" aria-label="Home">Events</a>
+                <a href="#" aria-label="Sign Up">Sign Up</a>
+                <a href="#" aria-label="Log In">Log In</a>
+                <a href="#" aria-label="Contact Us">Contact Us</a>
+                <span></span>
+            </nav>
+        </div>
+    </div>
+    <div class="container-1">
+
+        <div class="dropdown">
+            <div class="taskbar">
+                <p>Hover to see Exciting Prizes!!</p>
+            </div>
+            <div>
+                <ul>
+                    Cash Prizes:
+                    ₹50,000 for the overall winners.
+                    Runner-up prizes of ₹25,000 and ₹10,000.
+                </ul>
+                <p>
+                <ul>
+                    Gift Vouchers:
+                    Gift cards worth ₹5,000 from popular brands like Amazon, Flipkart, or Myntra.
+                    Spa or dine-out vouchers.
+                </ul>
+                <ul>
+                    Merchandise:
+                    Branded hoodies or T-shirts featuring the event logo.
+                    Exclusive accessories like caps, mugs, and tote bags.
+                </ul>
+                </p>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Coming Soon!!
+            </h1>
+            <ul class="event">
+                <li>Treasure Hunt</li>
+                <li>DJ Night</li>
+                <li>Couple dates</li>
+                <li>Drama</li>
+                <li>Dance</li>
+                <li>Music</li>
+            </ul>
+        </div>
+        <div class="year">
+            <h2>2k25</h2>
+        </div>
+    </div>
+    <h3>
+        Incandescence is the annual cultural festival of the National Institute of Technology (NIT) Silchar. Known as
+        one of the most vibrant and awaited events in the northeastern region, Incandescence is a celebration of art,
+        culture, creativity, and youthful energy. It serves as a platform for students to showcase their talents through
+        various cultural, literary, and artistic competitions, performances, and workshops.
+    </h3>
+    <div class="container-2">
+        <div class="left-text">
+            <h2 class="heading">NIT SILCHAR</h2>
+            <p class="subheading">Here is the galary of NIT Silchar of various events including incand, cultural fests
+                and also the beauty of our green campus. NIT Silchar is one of the best technical institute in India
+            </p>
+        </div>
+        <div class="gallary">
+            <div class="box row-2" id="box-4"
+                style="background-image: url(https://thereaderstime.in/wp-content/uploads/2021/10/NIT-Silchar-departments.jpg);">
+            </div>
+            <div class="box col-2" id="box-1"
+                style="background-image: url(https://i.ytimg.com/vi/S5qGAqrNYBc/maxresdefault.jpg);"></div>
+            <div class="box" id="box-3"
+                style="background-image: url(https://i.ytimg.com/vi/QGYg7IXI77Y/hqdefault.jpg);"></div>
+            <div class="box row-2" id="box-2"
+                style="background-image: url(https://images.unsplash.com/photo-1503435824048-a799a3a84bf7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+            </div>
+            <div class="box col-2" id="box-5"
+                style="background-image: url(https://i.ytimg.com/vi/1A1jNLE3UXk/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AHUBoAC4AOKAgwIABABGHIgEyh_MA8=&rs=AOn4CLDfjurQIdeGY5BtikqlePA12OgkZA);">
+            </div>
+            <div class="box" id="box-6"
+                style="background-image: url(https://i.ytimg.com/vi/ePAoTBYNfXI/maxresdefault.jpg);"></div>
+            <div class="box col-2" id="box-7"
+                style="background-image: url(https://i.ytimg.com/vi/68BnTj7j8Fo/maxresdefault.jpg);"></div>
+        </div>
+    </div>
+    <div class="sponsor">
+        <h3>Our Sponsors</h3>
+        <div class="carousel">
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <img src="https://static.vecteezy.com/system/resources/previews/020/336/033/original/puma-logo-puma-icon-free-free-vector.jpg"
+                        alt="Image 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://www.slashgear.com/img/gallery/5-amazon-features-that-will-change-the-way-you-shop-online/intro-1678234875.jpg"
+                        alt="Image 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://magingalagadngsining.files.wordpress.com/2014/07/kfc-logo.png"
+                        alt="Image 3">
+                </div>
+            </div>
+            <div class="carousel-indicators">
+                <div class="indicator active"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+            </div>
+        </div>
+    </div>
+    <footer style="background-color:black;">
+        <div class="footer-content">
+            <div class="social-media">
+                <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                    <img src="https://static.vecteezy.com/system/resources/previews/017/221/797/original/facebook-logo-transparent-background-free-png.png"
+                        alt="Facebook" width="50" height="50">
+                </a>
+                <a href="https://www.twitter.com" target="_blank" aria-label="Twitter">
+                    <img src="https://do.ssau.ru/img/twitter.png" alt="Twitter" width="50" height="50">
+                </a>
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                    <img src="https://static.vecteezy.com/system/resources/previews/018/930/473/original/instagram-logo-instagram-icon-transparent-free-png.png"
+                        alt="Instagram" width="50" height="50"></a>
+                <button id="darkModeToggle"
+                    style="position: fixed; top: 120px; right: 20px; padding: 10px; background: #222; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Dark
+                    Mode</button>
+            </div>
+        </div>
+
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById("darkModeToggle");
+
+        darkModeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            darkModeToggle.textContent = document.body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
+        });
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const indicators = document.querySelectorAll('.indicator');
+
+        let currentIndex = 0;
+
+        const updateCarousel = () => {
+            const slideWidth = slides[0].getBoundingClientRect().width;
+            track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        };
+
+        const autoSlide = () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+        };
+        setInterval(autoSlide, 2000);
+    </script>
+
+</body>
+
+</html>
